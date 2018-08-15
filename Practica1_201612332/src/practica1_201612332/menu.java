@@ -108,36 +108,47 @@ public static void datos_prueba(){
                             switch(opcion){
                             case "1":
                                 System.out.println("Bodega seleccionada: "+opcion);
+                                bodega_1[0][0]="B1";
                                 bodega_1[1][1]="bodega 1 activa";
                                 System.out.println(bodega_1[1][1]);
+                                
+                                
+                                System.out.println("probando impresion de tablas... con printf");///PRUEBAS EN HUMANOS :v
+        //el 20 son el numero de espacios que quedaran.. si quiero ingresar 4 columnas tendre que agregar otro "%-20s antes de \n→ejemplo sacado de: http://ingmmurillo.blogspot.com/2010/01/utilizacion-del-metodo-printf-para.html
+                                System.out.printf("%-20s%-20s%-20s\n",bodega_1[0][0],bodega_1[0][1],bodega_1[0][2]);
                                 break;
                        
                             case "2":
                                 System.out.println("Bodega seleccionada: "+opcion);
+                                bodega_2[0][0]="B5";
                                 bodega_2[1][1]="bodega 2 activa";
                                 System.out.println(bodega_2[1][1]);
                                 break;
                        
                             case "3":
                                 System.out.println("Bodega seleccionada: "+opcion);
+                                bodega_3[0][0]="B3";
                                 bodega_3[1][1]="bodega 3 activa";
                                 System.out.println(bodega_3[1][1]);
                                 break;
                        
                             case "4":
                                 System.out.println("Bodega seleccionada: "+opcion);
+                                bodega_4[0][0]="B4";
                                 bodega_4[1][1]="bodega 4 activa";
                                 System.out.println(bodega_4[1][1]);
                                 break;
                        
                             case "5":
                                 System.out.println("Bodega seleccionada: "+opcion);
+                                bodega_5[0][0]="B5";
                                 bodega_5[1][1]="bodega 5 activa";
                                 System.out.println(bodega_5[1][1]);
                                 break;
                        
                             case "6":
                                 System.out.println("Bodega seleccionada: "+opcion);
+                                bodega_6[0][0]="B6";
                                 bodega_6[1][1]="bodega 6 activa";
                                 System.out.println(bodega_6[1][1]);
                                 break;
