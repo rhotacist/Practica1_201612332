@@ -6,6 +6,7 @@
 package practica1_201612332;
 
 import java.util.Scanner;
+import java.util.Random;
 
 /**
  *
@@ -18,6 +19,10 @@ public class menu {
     public static int num_bodega;
     public static int num_productos;
     
+    public static int num_existencias;
+    public static int num_entradas;
+    public static int num_salidas;
+    
     public static Scanner leer = new Scanner(System.in);
     
     //variables publicas para arreglos y matrices
@@ -27,6 +32,10 @@ public class menu {
     public static String[][] bodega_4=new String[6][21];
     public static String[][] bodega_5=new String[6][21];
     public static String[][] bodega_6=new String[6][21];
+    
+    public static final int fila_nueva =2;
+    public static String estado_nuevo;//este sera el nombre a colocar en la nueva fila ↑ #correlativo /compra o venta
+    public static String[][] kardex = new String[fila_nueva][7];
     
     public static void main(String[] args) {
         plantilla_tablas();
@@ -122,7 +131,7 @@ public static void datos_prueba(){
                                     num_productos=leer.nextInt();
                             }
                              System.out.println("\033[32m♦Se ingresaron "+num_productos+" productos aleatoriamente en bodega #"+num_bodega+"\033[30m");
-                             llenado_bodegas();
+                             llenado_bodegas();//metodo para llenar bodega
                              switch(num_bodega){
                                 
                                 case 1://CARGARA LA BODEGA 1
@@ -360,7 +369,18 @@ public static void datos_prueba(){
         }
         
         public static void kardex(){
+            System.out.println("\033[34m|♦|MOSTRANDO KARDEX \033[30m");
             
+            for (int x=0; x < kardex.length; x++) {
+                                    System.out.print("|");
+                                    for (int y=0; y < kardex[x].length; y++) {
+                                        System.out.printf ("%-7s |",kardex[x][y]);
+                                            if (y!=kardex[x].length-1) {//cuando imprima la ultima fila pasara a la siguiente
+                                                System.out.print("\t |");//tabular
+                                            }
+                                                                                }
+                                System.out.println("");
+                                }
         }
         
         public static void reportes(){
@@ -458,13 +478,14 @@ public static void datos_prueba(){
         }
 
         public static void plantilla_tablas() { //este metodo tipo plantilla solamente cargará la primera fila y primera columna...
-        //nombre asignado en la posicion 0,0 abreviado como BODEGA 1                        
+                        
                                         bodega_1[0][0]="|\033[32mB1\033[30m|";
                                         bodega_2[0][0]="|\033[32mB2\033[30m|";
                                         bodega_3[0][0]="|\033[32mB3\033[30m|";
                                         bodega_4[0][0]="|\033[32mB4\033[30m|";
                                         bodega_5[0][0]="|\033[32mB5\033[30m|";
                                         bodega_6[0][0]="|\033[32mB6\033[30m|";
+                                       
        //llenado automatico para la primera fila que identifica a los espacios de 1-20 en cada columna  
                                         for(int y=0;y<20;y++){
                                         bodega_1[0][y+1]=("|\033[35mE"+(y+1))+"\033[30m|";
@@ -553,12 +574,36 @@ public static void datos_prueba(){
                                             }
                                             }
                                         }
+                                        
+        //configuracion del KARDEX
+        kardex[0][0]="Detalle";
+        kardex[0][1]="Entrada";
+        kardex[0][2]="Total";
+        kardex[0][3]="Salida";
+        kardex[0][4]="Total";
+        kardex[0][5]="Existencias";
+        kardex[0][6]="Total";
+        
     }
         
         public static void llenado_bodegas(){
-            int fila_random=(int) (Math.random() * 6 + 1); //este solo podra estar comprendido entre la fila 2→6 en el arreglo de 1→5
-            int columna_random = (int) (Math.random() * 20 + 1); //este solo podra estar comprendido entre columna 2→20 en el arreglo de 1→19
-            System.out.println("Ingresado en Col:"+columna_random +"y Fil:"+fila_random );
+            
+            int fila_random=(int)(Math.random() * 6 + 1); //este solo podra estar comprendido entre la fila 2→6 en el arreglo de 1→5
+            int columna_random = (int)(Math.random() * 20 + 1); //este solo podra estar comprendido entre columna 2→20 en el arreglo de 1→19
+            
+            
+            
+
+            
+            if (num_bodega ==1){
+                while(num_productos>0)
+                        
+                        bodega_1[fila_random][columna_random]="B1,P"+fila_random+","+columna_random;
+                num_productos--;
+                
+                   
+            }
+            
         }
 
 
