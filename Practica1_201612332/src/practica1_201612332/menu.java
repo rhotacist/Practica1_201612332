@@ -17,6 +17,7 @@ public class menu {
     public static String opcion;//
     public static int num_bodega;
     public static int num_productos;
+    
     public static Scanner leer = new Scanner(System.in);
     
     //variables publicas para arreglos y matrices
@@ -29,6 +30,7 @@ public class menu {
     
     public static void main(String[] args) {
         plantilla_tablas();
+        
         menu_principal();
         
         
@@ -107,17 +109,23 @@ public static void datos_prueba(){
                             
                             System.out.println("→Ingrese # de bodega a llenar:");
                             num_bodega = leer.nextInt();
+                            while(num_bodega<=0 || num_bodega>=7){
+                                System.out.println("\033[31mSolamente existen bodegas de 1-6...\033[30m");
+                                    num_bodega=leer.nextInt();
+                            }
                             ////Inicio para el ingreso de productos
                                            
                             System.out.println("→Ingrese # de productos a ingresar (15-75):");
                             num_productos=leer.nextInt();
                             while(num_productos<=14 || num_productos>=76 ){
-                                    System.out.println("\033[31mSolamente puedre ingresar de 15 a 75 productos...\033[30m");
+                                    System.out.println("\033[31mSolamente puede ingresar de 15 a 75 productos...\033[30m");
                                     num_productos=leer.nextInt();
                             }
                              System.out.println("\033[32m♦Se ingresaron "+num_productos+" productos aleatoriamente en bodega #"+num_bodega+"\033[30m");
-                            switch(num_bodega){
-                                case 1:
+                             llenado_bodegas();
+                             switch(num_bodega){
+                                
+                                case 1://CARGARA LA BODEGA 1
                                 System.out.println("Bodega seleccionada: #"+num_bodega);
                                 
         
@@ -135,15 +143,21 @@ public static void datos_prueba(){
                                 System.out.println("");
                                 }
                                 
-                                System.out.println("termina impresion de prueba en maquinas");
+                                System.out.println("\033[34m→INGRESE CUALQUIER CARACTER PARA CONTINUAR...\033[30m");
+                                    opcion=leer.next();
+                                    switch(opcion){
+                                        default: 
+                                            datos_prueba();
+                                            break;
+                                    }
 /// FIN EN MAQUINAS
                                 
                                 break;
                                 
                                     
                        
-                                case 2:
-                                System.out.println("Bodega seleccionada: "+opcion);
+                                case 2: //CARGARA LA BODEGA 2
+                                System.out.println("Bodega seleccionada: "+num_bodega);
                                 bodega_1[0][0]="|\033[32mB1\033[30m|";//nombre asignado en la posicion 0,0 abreviado como BODEGA 1
         
                                 
@@ -151,99 +165,129 @@ public static void datos_prueba(){
 
   //PRUEBAS EN MAQUINAS [•_•]→esto imrpimira la matriz completa con espaciado....
                                 
-                                for (int x=0; x < bodega_1.length; x++) {
+                                for (int x=0; x < bodega_2.length; x++) {
                                     System.out.print("");
-                                    for (int y=0; y < bodega_1[x].length; y++) {
-                                        System.out.printf ("%-4s",bodega_1[x][y]);
-                                            if (y!=bodega_1[x].length-1) {//cuando imprima la ultima fila pasara a la siguiente
+                                    for (int y=0; y < bodega_2[x].length; y++) {
+                                        System.out.printf ("%-4s",bodega_2[x][y]);
+                                            if (y!=bodega_2[x].length-1) {//cuando imprima la ultima fila pasara a la siguiente
                                                 System.out.print("\t");//tabular
                                             }
                                                                                 }
                                 System.out.println("");
                                 }
                                 
-                                System.out.println("termina impresion de prueba en maquinas");
+                                System.out.println("\033[34m→INGRESE CUALQUIER CARACTER PARA CONTINUAR...\033[30m");
+                                    opcion=leer.next();
+                                    switch(opcion){
+                                        default: 
+                                            datos_prueba();
+                                            break;
+                                    }
                                 break;
                        
-                                case 3:
-                                System.out.println("Bodega seleccionada: "+opcion);
+                                case 3: //CARGARA LA BODEGA 3
+                                System.out.println("Bodega seleccionada: "+num_bodega);
                                 bodega_1[0][0]="|\033[32mB1\033[30m|";//nombre asignado en la posicion 0,0 abreviado como BODEGA 1
         
 
   //PRUEBAS EN MAQUINAS [•_•]→esto imrpimira la matriz completa con espaciado....
                                 
-                                for (int x=0; x < bodega_1.length; x++) {
+                                for (int x=0; x < bodega_3.length; x++) {
                                     System.out.print("");
-                                    for (int y=0; y < bodega_1[x].length; y++) {
-                                        System.out.printf ("%-4s",bodega_1[x][y]);
-                                            if (y!=bodega_1[x].length-1) {//cuando imprima la ultima fila pasara a la siguiente
+                                    for (int y=0; y < bodega_3[x].length; y++) {
+                                        System.out.printf ("%-4s",bodega_3[x][y]);
+                                            if (y!=bodega_3[x].length-1) {//cuando imprima la ultima fila pasara a la siguiente
                                                 System.out.print("\t");//tabular
                                             }
                                                                                 }
                                 System.out.println("");
                                 }
                                 
-                                System.out.println("termina impresion de prueba en maquinas");
+                                System.out.println("\033[34m→INGRESE CUALQUIER CARACTER PARA CONTINUAR...\033[30m");
+                                    opcion=leer.next();
+                                    switch(opcion){
+                                        default: 
+                                            datos_prueba();
+                                            break;
+                                    }
                                 break;
                        
-                                case 4:
-                                System.out.println("Bodega seleccionada: "+opcion);
+                                case 4: //CARGARA LA BODEGA 4
+                                System.out.println("Bodega seleccionada: "+num_bodega);
                                 
 
   //PRUEBAS EN MAQUINAS [•_•]→esto imrpimira la matriz completa con espaciado....
                                 
-                                for (int x=0; x < bodega_1.length; x++) {
+                                for (int x=0; x < bodega_4.length; x++) {
                                     System.out.print("");
-                                    for (int y=0; y < bodega_1[x].length; y++) {
-                                        System.out.printf ("%-4s",bodega_1[x][y]);
-                                            if (y!=bodega_1[x].length-1) {//cuando imprima la ultima fila pasara a la siguiente
+                                    for (int y=0; y < bodega_4[x].length; y++) {
+                                        System.out.printf ("%-4s",bodega_4[x][y]);
+                                            if (y!=bodega_4[x].length-1) {//cuando imprima la ultima fila pasara a la siguiente
                                                 System.out.print("\t");//tabular
                                             }
                                                                                 }
                                 System.out.println("");
                                 }
                                 
-                                System.out.println("termina impresion de prueba en maquinas");
+                                System.out.println("\033[34m→INGRESE CUALQUIER CARACTER PARA CONTINUAR...\033[30m");
+                                    opcion=leer.next();
+                                    switch(opcion){
+                                        default: 
+                                            datos_prueba();
+                                            break;
+                                    }
                                 break;
                        
-                                case 5:
-                                System.out.println("Bodega seleccionada: "+opcion);
+                                case 5: //CARGARA LA BODEGA 5
+                                System.out.println("Bodega seleccionada: "+num_bodega);
                                 
 
   //PRUEBAS EN MAQUINAS [•_•]→esto imrpimira la matriz completa con espaciado....
                                 
-                                for (int x=0; x < bodega_1.length; x++) {
+                                for (int x=0; x < bodega_5.length; x++) {
                                     System.out.print("");
-                                    for (int y=0; y < bodega_1[x].length; y++) {
-                                        System.out.printf ("%-4s",bodega_1[x][y]);
-                                            if (y!=bodega_1[x].length-1) {//cuando imprima la ultima fila pasara a la siguiente
+                                    for (int y=0; y < bodega_5[x].length; y++) {
+                                        System.out.printf ("%-4s",bodega_5[x][y]);
+                                            if (y!=bodega_5[x].length-1) {//cuando imprima la ultima fila pasara a la siguiente
                                                 System.out.print("\t");//tabular
                                             }
                                                                                 }
                                 System.out.println("");
                                 }
                                 
-                                System.out.println("termina impresion de prueba en maquinas");
+                                System.out.println("\033[34m→INGRESE CUALQUIER CARACTER PARA CONTINUAR...\033[30m");
+                                    opcion=leer.next();
+                                    switch(opcion){
+                                        default: 
+                                            datos_prueba();
+                                            break;
+                                    }
                                 break;
                        
-                                case 6:
-                                System.out.println("Bodega seleccionada: "+opcion);
+                                case 6: //CARGARA LA BODEGA 6
+                                System.out.println("Bodega seleccionada: "+num_bodega);
                                 
 
   //PRUEBAS EN MAQUINAS [•_•]→esto imrpimira la matriz completa con espaciado....
                                 
-                                for (int x=0; x < bodega_1.length; x++) {
+                                for (int x=0; x < bodega_6.length; x++) {
                                     System.out.print("");
-                                    for (int y=0; y < bodega_1[x].length; y++) {
-                                        System.out.printf ("%-4s",bodega_1[x][y]);
-                                            if (y!=bodega_1[x].length-1) {//cuando imprima la ultima fila pasara a la siguiente
+                                    for (int y=0; y < bodega_6[x].length; y++) {
+                                        System.out.printf ("%-4s",bodega_6[x][y]);
+                                            if (y!=bodega_6[x].length-1) {//cuando imprima la ultima fila pasara a la siguiente
                                                 System.out.print("\t");//tabular
                                             }
                                                                                 }
                                 System.out.println("");
                                 }
                                 
-                                System.out.println("termina impresion de prueba en maquinas");
+                                System.out.println("\033[34m→INGRESE CUALQUIER CARACTER PARA CONTINUAR...\033[30m");
+                                    opcion=leer.next();
+                                    switch(opcion){
+                                        default: 
+                                            datos_prueba();
+                                            break;
+                                    }
                                 break;
                             
                                 default:
@@ -257,7 +301,7 @@ public static void datos_prueba(){
                             System.out.println("------------------------");
                             break;//freno de caso 1 para el programa datos de prueba
                             
-                case "2": System.out.println("------------------------");
+                case "2":   System.out.println("------------------------");
                             System.out.println("║-----Vaciar Bodegas-----║");
                             //pruebas para tablas de datos
                             
@@ -287,9 +331,13 @@ public static void datos_prueba(){
                                     break;
                             }
                 
-                break;
+                            break;
                 
-                
+                case "3":   System.out.println("Regresando a menu principal...");
+                            menu.menu_principal();
+                            break;
+                            
+                            
                 default: System.err.println("Error... Ingrese valor numero");
                     System.out.println(" regresando a datos prueba");
                          datos_prueba();
@@ -403,13 +451,13 @@ public static void datos_prueba(){
                                     opcion=leer.next();
                                     switch(opcion){
                                         default: 
-                                            menu.main(null);
+                                            menu.menu_principal();
                                             break;
                                     }
                                     
         }
 
-    public static void plantilla_tablas() { //este metodo tipo plantilla solamente cargará la primera fila y primera columna...
+        public static void plantilla_tablas() { //este metodo tipo plantilla solamente cargará la primera fila y primera columna...
         //nombre asignado en la posicion 0,0 abreviado como BODEGA 1                        
                                         bodega_1[0][0]="|\033[32mB1\033[30m|";
                                         bodega_2[0][0]="|\033[32mB2\033[30m|";
@@ -506,7 +554,12 @@ public static void datos_prueba(){
                                             }
                                         }
     }
- 
+        
+        public static void llenado_bodegas(){
+            int fila_random=(int) (Math.random() * 6 + 1); //este solo podra estar comprendido entre la fila 2→6 en el arreglo de 1→5
+            int columna_random = (int) (Math.random() * 20 + 1); //este solo podra estar comprendido entre columna 2→20 en el arreglo de 1→19
+            System.out.println("Ingresado en Col:"+columna_random +"y Fil:"+fila_random );
+        }
 
 
 
