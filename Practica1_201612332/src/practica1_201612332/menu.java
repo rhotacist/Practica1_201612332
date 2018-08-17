@@ -156,15 +156,13 @@ public static void datos_prueba(){
                                 
                         case 1://CARGARA LA BODEGA 1
                                 System.out.println("Bodega seleccionada: #"+num_bodega);
-                                
-                                llenado_bodegas();
-                
+                                    llenado_bodegas();
                                 //PRUEBAS EN MAQUINAS [•_•]→esto imrpimira la matriz completa con espaciado....
                                 
                                 for (int x=0; x < bodega_1.length; x++) {
                                     System.out.print("");
                                     for (int y=0; y < bodega_1[x].length; y++) {
-                                        System.out.printf ("%-4s",bodega_1[x][y]);
+                                        System.out.print(bodega_1[x][y]);
                                             if (y!=bodega_1[x].length-1) {//cuando imprima la ultima fila pasara a la siguiente
                                                 System.out.print("\t");//tabular
                                             }
@@ -195,7 +193,7 @@ public static void datos_prueba(){
                                 for (int x=0; x < bodega_2.length; x++) {
                                     System.out.print("");
                                     for (int y=0; y < bodega_2[x].length; y++) {
-                                        System.out.printf ("%-4s",bodega_2[x][y]);
+                                        System.out.print(bodega_2[x][y]);
                                             if (y!=bodega_2[x].length-1) {//cuando imprima la ultima fila pasara a la siguiente
                                                 System.out.print("\t");//tabular
                                             }
@@ -222,7 +220,7 @@ public static void datos_prueba(){
                                 for (int x=0; x < bodega_3.length; x++) {
                                     System.out.print("");
                                     for (int y=0; y < bodega_3[x].length; y++) {
-                                        System.out.printf ("%-4s",bodega_3[x][y]);
+                                        System.out.print(bodega_3[x][y]);
                                             if (y!=bodega_3[x].length-1) {//cuando imprima la ultima fila pasara a la siguiente
                                                 System.out.print("\t");//tabular
                                             }
@@ -247,7 +245,7 @@ public static void datos_prueba(){
                                 for (int x=0; x < bodega_4.length; x++) {
                                     System.out.print("");
                                     for (int y=0; y < bodega_4[x].length; y++) {
-                                        System.out.printf ("%-4s",bodega_4[x][y]);
+                                        System.out.print(bodega_4[x][y]);
                                             if (y!=bodega_4[x].length-1) {//cuando imprima la ultima fila pasara a la siguiente
                                                 System.out.print("\t");//tabular
                                             }
@@ -272,7 +270,7 @@ public static void datos_prueba(){
                                 for (int x=0; x < bodega_5.length; x++) {
                                     System.out.print("");
                                     for (int y=0; y < bodega_5[x].length; y++) {
-                                        System.out.printf ("%-4s",bodega_5[x][y]);
+                                        System.out.print(bodega_5[x][y]);
                                             if (y!=bodega_5[x].length-1) {//cuando imprima la ultima fila pasara a la siguiente
                                                 System.out.print("\t");//tabular
                                             }
@@ -299,7 +297,7 @@ public static void datos_prueba(){
                                 for (int x=0; x < bodega_6.length; x++) {
                                     System.out.print("");
                                     for (int y=0; y < bodega_6[x].length; y++) {
-                                        System.out.printf ("%-4s",bodega_6[x][y]);
+                                        System.out.print(bodega_6[x][y]);
                                             if (y!=bodega_6[x].length-1) {//cuando imprima la ultima fila pasara a la siguiente
                                                 System.out.print("\t");//tabular
                                             }
@@ -422,7 +420,7 @@ public static void datos_prueba(){
             for (int x=0; x < bodega_1.length; x++) {
                                     System.out.print("");
                                     for (int y=0; y < bodega_1[x].length; y++) {
-                                        System.out.printf ("%-4s",bodega_1[x][y]);
+                                        System.out.print(bodega_1[x][y]);
                                             if (y!=bodega_1[x].length-1) {//cuando imprima la ultima fila pasara a la siguiente
                                                 System.out.print("\t");//tabular
                                             }
@@ -435,7 +433,7 @@ public static void datos_prueba(){
             for (int x=0; x < bodega_2.length; x++) {
                                     System.out.print("");
                                     for (int y=0; y < bodega_2[x].length; y++) {
-                                        System.out.printf ("%-4s",bodega_2[x][y]);
+                                        System.out.print(bodega_2[x][y]);
                                             if (y!=bodega_2[x].length-1) {//cuando imprima la ultima fila pasara a la siguiente
                                                 System.out.print("\t");//tabular
                                             }
@@ -448,7 +446,7 @@ public static void datos_prueba(){
             for (int x=0; x < bodega_3.length; x++) {
                                     System.out.print("");
                                     for (int y=0; y < bodega_3[x].length; y++) {
-                                        System.out.printf ("%-4s",bodega_3[x][y]);
+                                        System.out.print(bodega_3[x][y]);
                                             if (y!=bodega_3[x].length-1) {//cuando imprima la ultima fila pasara a la siguiente
                                                 System.out.print("\t");//tabular
                                             }
@@ -461,7 +459,7 @@ public static void datos_prueba(){
             for (int x=0; x < bodega_4.length; x++) {
                                     System.out.print("");
                                     for (int y=0; y < bodega_4[x].length; y++) {
-                                        System.out.printf ("%-4s",bodega_4[x][y]);
+                                        System.out.print(bodega_4[x][y]);
                                             if (y!=bodega_4[x].length-1) {//cuando imprima la ultima fila pasara a la siguiente
                                                 System.out.print("\t");//tabular
                                             }
@@ -474,7 +472,7 @@ public static void datos_prueba(){
             for (int x=0; x < bodega_5.length; x++) {
                                     System.out.print("");
                                     for (int y=0; y < bodega_5[x].length; y++) {
-                                        System.out.printf ("%-4s",bodega_5[x][y]);
+                                        System.out.print(bodega_5[x][y]);
                                             if (y!=bodega_5[x].length-1) {//cuando imprima la ultima fila pasara a la siguiente
                                                 System.out.print("\t");//tabular
                                             }
@@ -487,7 +485,7 @@ public static void datos_prueba(){
             for (int x=0; x < bodega_6.length; x++) {
                                     System.out.print("");
                                     for (int y=0; y < bodega_6[x].length; y++) {
-                                        System.out.printf ("%-4s",bodega_6[x][y]);
+                                        System.out.print(bodega_6[x][y]);
                                             if (y!=bodega_6[x].length-1) {//cuando imprima la ultima fila pasara a la siguiente
                                                 System.out.print("\t");//tabular
                                             }
@@ -602,7 +600,9 @@ public static void datos_prueba(){
                                                 bodega_6[x][y]="\033[31m-\033[30m";
                                             }
                                             }
+
                                         }
+
                                         
         //configuracion del KARDEX
         kardex[0][0]="\033[34mDetalle    \033[30m";
@@ -617,63 +617,87 @@ public static void datos_prueba(){
         
         public static void llenado_bodegas(){
             if (num_bodega ==1){
-                int contador_prod=0;
-                num_productos=contador_prod;
-                while(num_productos>0){
+                int contador_prod;
+                contador_prod=num_productos;
+                while(contador_prod>0){
                 num_randoms();
-                        bodega_2[fila_random][columna_random]="B1,P"+fila_random+","+columna_random;
-               contador_prod--;
+                    if(bodega_1[fila_random][columna_random]!="-"){//si la cassilla no es null osea no esta ocupada.. la llenara
+                        bodega_1[fila_random][columna_random]="B1P"+fila_random+","+columna_random;
+                        contador_prod--;
+                } else{
+                        num_randoms();
+                    }
                 }
      
             }
             
             if (num_bodega ==2){
-                int contador_prod=0;
-                num_productos=contador_prod;
-                while(num_productos>0){
+                int contador_prod;
+                contador_prod=num_productos;
+                while(contador_prod>0){
                 num_randoms();
-                        bodega_2[fila_random][columna_random]="B2,P"+fila_random+","+columna_random;
-                contador_prod--;
+                    if(bodega_2[fila_random][columna_random]!="-"){//si la cassilla no es null osea no esta ocupada.. la llenara
+                        bodega_2[fila_random][columna_random]="B2P"+fila_random+","+columna_random;
+                        contador_prod--;
+                } else{
+                        num_randoms();
+                    }
                 }
             }
             
             if (num_bodega ==3){
-                int contador_prod=0;
-                num_productos=contador_prod;
-                while(num_productos>0){
-                num_randoms();        
-                        bodega_3[fila_random][columna_random]="B3,P"+fila_random+","+columna_random;
-                contador_prod--;
+                int contador_prod;
+                contador_prod=num_productos;
+                while(contador_prod>0){
+                num_randoms();
+                    if(bodega_3[fila_random][columna_random]!="-"){//si la cassilla no es null osea no esta ocupada.. la llenara
+                        bodega_3[fila_random][columna_random]="B3P"+fila_random+","+columna_random;
+                        contador_prod--;
+                } else{
+                        num_randoms();
+                    }
                 }
             }
             
             if (num_bodega ==4){
-                int contador_prod=0;
-                num_productos=contador_prod;
-                while(num_productos>0){
-                num_randoms();        
-                        bodega_5[fila_random][columna_random]="B4,P"+fila_random+","+columna_random;
-                contador_prod--;
+                int contador_prod;
+                contador_prod=num_productos;
+                while(contador_prod>0){
+                num_randoms();
+                    if(bodega_4[fila_random][columna_random]!="-"){//si la cassilla no es null osea no esta ocupada.. la llenara
+                        bodega_4[fila_random][columna_random]="B4P"+fila_random+","+columna_random;
+                        contador_prod--;
+                } else{
+                        num_randoms();
+                    }
                 }
      
             }
             
             if (num_bodega ==5){
-                int contador_prod=0;
-                num_productos=contador_prod;
-                while(num_productos>0){
-                num_randoms();        
-                        bodega_5[fila_random][columna_random]="B4,P"+fila_random+","+columna_random;
-                contador_prod--;
+                int contador_prod;
+                contador_prod=num_productos;
+                while(contador_prod>0){
+                num_randoms();
+                    if(bodega_5[fila_random][columna_random]!="-"){//si la cassilla no es null osea no esta ocupada.. la llenara
+                        bodega_5[fila_random][columna_random]="B5P"+fila_random+","+columna_random;
+                        contador_prod--;
+                } else{
+                        num_randoms();
+                    }
                 }
             }
             if (num_bodega ==6){
-                int contador_prod=0;
-                num_productos=contador_prod;
-                while(num_productos>0){
-                num_randoms();        
-                        bodega_6[fila_random][columna_random]="B5,P"+fila_random+","+columna_random;
-                contador_prod--;
+                int contador_prod;
+                contador_prod=num_productos;
+                while(contador_prod>0){
+                num_randoms();
+                    if(bodega_6[fila_random][columna_random]!="-"){//si la cassilla no es null osea no esta ocupada.. la llenara
+                        bodega_6[fila_random][columna_random]="B6P"+fila_random+","+columna_random;
+                        contador_prod--;
+                } else{
+                        num_randoms();
+                    }
                 }
             }
             
@@ -682,11 +706,15 @@ public static void datos_prueba(){
         
 
         public static void num_randoms(){
-            fila_random=(int)(Math.random() * 6 + 1); //este solo podra estar comprendido entre la fila 2→6 en el arreglo de 1→5
+            fila_random=(int)(Math.random() * 5 + 1); //este solo podra estar comprendido entre la fila 2→6 en el arreglo de 1→5
             columna_random = (int)(Math.random() * 20 + 1); //este solo podra estar comprendido entre columna 2→20 en el arreglo de 1→19
             
         }
         
+        
+        public static void imprime_bodega(){
+            
+        }
 }
     
     
