@@ -944,49 +944,56 @@ System.out.println("Se trasladara de Bodega #"+bodega_salida+" a Bodega #"+bodeg
         public static void verificador_bodegas(){
             //----------------------------------------------------------
             
-                
+                //verificara cuando la bodega de salida no sea un espacio vacio, si el estado de traslado en algun momento cambia a falso
+                //por no cumplir con mostrara el error de que el producto no existe y regresara---
+                //si el estado de la salida se mantiene en verdadero este realizara el cambio por el producto de salida a "-" vacio 
                 if(bodega_salida==1 && bodega_1[producto_salida][espacio_salida]=="-" && estado_traslado==false){
                             estado_traslado=false;
-                            System.out.println("•Producto #"+producto_salida+" en Bodega #"+bodega_salida+" no existe" );
+                            System.out.println("•Producto #"+producto_salida+" en el Espacio#"+espacio_salida+" de la Bodega #"+bodega_salida+" no existe" );
                             System.out.println("<-- Regresando...");
                             traslados_bodega();
-                        }else if(bodega_1[producto_salida][espacio_salida]!="-" && estado_traslado==true ){
+                        }
+                 if(bodega_salida==1 && bodega_1[producto_salida][espacio_salida]!="-" || (bodega_salida==1 && estado_traslado==true)){
                             bodega_1[producto_salida][espacio_salida]="-";
                             
                             System.out.println("Salida B1: Traslado correcto...");
+                            espacios_b1++;
                             estado_traslado = true;
-                            espacios_b1--;
-     
+                            
                     }
+            //verificara si el espacio de destino esta ocupado.. si esta ocupado no ingresara el producto y marcara falso
+            //en la salida de las bodegas se requiere el estado del traslado... si esto termina falso, la salida sera falsa tambien
+            //no vaciara el producto y no ingresara el producto
             
             
-            if( bodega_entrada==1 &&  bodega_1[producto_entrada][espacio_entrada]!="-"){
-                            System.out.println("Entrada B1: Traslado incorrecto...");
-                            System.out.println("Espacio Ocupado");
-                            estado_traslado = false;
-                        }
-            else if (bodega_1[producto_entrada][espacio_entrada]=="-"){
+            if (bodega_entrada==1 && bodega_1[producto_entrada][espacio_entrada]=="-"){
                         //verifica si el espacio esta vacio
                             System.out.println("Espacio disponible..."+espacios_b1);
                             estado_traslado=true;
                             bodega_1[producto_entrada][espacio_entrada]="B1P"+producto_entrada+","+espacio_entrada;
-                            System.out.println("•Producto #"+producto_entrada+" ingresado" );
-                            espacios_b1++;
+                            System.out.println("•Producto #"+producto_entrada+" en el Espacio#"+espacio_entrada+" de la Bodega #"+bodega_entrada+" ingresado" );
+                            espacios_b1--;
             }
+            else if( bodega_entrada==1 &&  bodega_1[producto_entrada][espacio_entrada]!="-" && estado_traslado==false){
+                            System.out.println("Entrada B1: Traslado incorrecto...");
+                            System.out.println("Espacio Ocupado");
+                            estado_traslado = false;
+                        }
                         
             //----------------------------------------------------------
             
                 
                 if(bodega_salida==2 && bodega_2[producto_salida][espacio_salida]=="-" && estado_traslado==false){
                             estado_traslado=false;
-                            System.out.println("•Producto #"+producto_salida+" en Bodega #"+bodega_salida+" no existe" );
+                            System.out.println("•Producto #"+producto_salida+" en el Espacio#"+espacio_salida+" de la Bodega #"+bodega_salida+" no existe" );
                             System.out.println("<-- Regresando...");
                             traslados_bodega();
-                        }else if(bodega_2[producto_entrada][espacio_entrada]!="-" && estado_traslado==true){
+                        }
+                if( bodega_salida==2 && bodega_2[producto_salida][espacio_salida]!="-" || (bodega_salida==2 && estado_traslado==true)){
                             bodega_2[producto_salida][espacio_salida]="-";
                             
                             System.out.println("Salida B2: Traslado correcto...");
-                            espacios_b2--;
+                            espacios_b2++;
                             estado_traslado = true;
      
                     }
@@ -996,28 +1003,31 @@ System.out.println("Se trasladara de Bodega #"+bodega_salida+" a Bodega #"+bodeg
                             System.out.println("Espacio disponible..."+espacios_b2);
                             estado_traslado=true;
                             bodega_2[producto_entrada][espacio_entrada]="B2P"+producto_entrada+","+espacio_entrada;
-                            System.out.println("•Producto #"+producto_entrada+" ingresado" );
-                            espacios_b2++;
+                            System.out.println("•Producto #"+producto_entrada+" en el Espacio#"+espacio_entrada+" de la Bodega #"+bodega_entrada+" ingresado" );
+                            espacios_b2--;
             }
-                        else if(bodega_2[producto_entrada][espacio_entrada]!="-" ){
+            else if(bodega_entrada==2 && bodega_2[producto_entrada][espacio_entrada]!="-" && estado_traslado==false ){
                             System.out.println("Entrada B2: Traslado incorrecto...");
                             System.out.println("Espacio Ocupado");
                             
                             estado_traslado = false;
                         }
+            
+            
             //----------------------------------------------------------
             
                 if(bodega_salida==3 && bodega_3[producto_salida][espacio_salida]=="-" && estado_traslado==false){
                             estado_traslado=false;
-                            System.out.println("•Producto #"+producto_salida+" en Bodega #"+bodega_salida+" no existe" );
+                            System.out.println("•Producto #"+producto_salida+" en el Espacio#"+espacio_salida+" de la Bodega #"+bodega_salida+" no existe" );
                             System.out.println("<-- Regresando...");
                             traslados_bodega();
-                        }else if(bodega_3[producto_entrada][espacio_entrada]!="-" && estado_traslado==true){
+                        }
+                if(bodega_salida==3 && bodega_3[producto_salida][espacio_salida]!="-" || (bodega_salida==3 && estado_traslado==true)){
                             bodega_3[producto_salida][espacio_salida]="-";
                             
                             System.out.println("Salida B3: Traslado correcto...");
                             estado_traslado = true;
-                            espacios_b3--;
+                            espacios_b3++;
      
                     }
                 
@@ -1027,89 +1037,90 @@ System.out.println("Se trasladara de Bodega #"+bodega_salida+" a Bodega #"+bodeg
                             System.out.println("Espacio disponible..."+espacios_b3);
                             estado_traslado=true;
                             bodega_3[producto_entrada][espacio_entrada]="B3P"+producto_entrada+","+espacio_entrada;
-                            System.out.println("•Producto #"+producto_entrada+" ingresado" );
-                            espacios_b3++;
+                            System.out.println("•Producto #"+producto_entrada+" en el Espacio#"+espacio_entrada+" de la Bodega #"+bodega_entrada+" ingresado" );
+                            espacios_b3--;
             }
-                        else if(bodega_3[producto_entrada][espacio_entrada]!="-"){
+            else if(bodega_entrada ==3 && bodega_3[producto_entrada][espacio_entrada]!="-" && estado_traslado==false){
                             System.out.println("Entrada B3: Traslado incorrecto...");
                             System.out.println("Espacio Ocupado");
                             
                             estado_traslado = false;
                         }
-            //----------------------------------------------------------
             
+            //----------------------------------------------------------
                 if(bodega_salida==4 && bodega_4[producto_salida][espacio_salida]=="-" && estado_traslado==false){
                             estado_traslado=false;
-                            System.out.println("•Producto #"+producto_salida+" en Bodega #"+bodega_salida+" no existe" );
+                            System.out.println("•Producto #"+producto_salida+" en el Espacio#"+espacio_salida+" de la Bodega #"+bodega_salida+" no existe" );
                             System.out.println("<-- Regresando...");
                             traslados_bodega();
-                        }else if(bodega_4[producto_entrada][espacio_entrada]!="-" && estado_traslado==true){
+                        }
+                if(bodega_salida==4 && bodega_4[producto_salida][espacio_salida]!="-" || (bodega_salida==4 && estado_traslado==true)){
                             bodega_4[producto_salida][espacio_salida]="-";
                             
                             System.out.println("Salida B4: Traslado correcto...");
-                            espacios_b4--;
+                            espacios_b4++;
                             estado_traslado = true;
      
                     }
-                
-
+            
             if (bodega_entrada==4 && bodega_4[producto_entrada][espacio_entrada]=="-"){
                         //verifica si el espacio esta vacio
-                            System.out.println("Espacio disponible..."+espacios_b4);
+                            System.out.println("Espacio disponible..."+espacios_b5);
                             estado_traslado=true;
                             bodega_4[producto_entrada][espacio_entrada]="B4P"+producto_entrada+","+espacio_entrada;
-                            System.out.println("•Producto #"+producto_entrada+" ingresado" );
-                            espacios_b4++;
+                            System.out.println("•Producto #"+producto_entrada+" en el Espacio#"+espacio_entrada+" de la Bodega #"+bodega_entrada+" ingresado" );
+                            espacios_b4--;
             }
-                        else if(bodega_4[producto_entrada][espacio_entrada]!="-"){
+            else if(bodega_entrada==4 && bodega_4[producto_entrada][espacio_entrada]!="-" && estado_traslado==false ){
                             System.out.println("Entrada B4: Traslado incorrecto...");
                             System.out.println("Espacio Ocupado");
                             
                             estado_traslado = false;
                         }
-            //----------------------------------------------------------
             
+            //----------------------------------------------------------
                 if(bodega_salida==5 && bodega_5[producto_salida][espacio_salida]=="-" && estado_traslado==false){
                             estado_traslado=false;
-                            System.out.println("•Producto #"+producto_salida+" en Bodega #"+bodega_salida+" no existe" );
+                            System.out.println("•Producto #"+producto_salida+" en el Espacio#"+espacio_salida+" de la Bodega #"+bodega_salida+" no existe" );
                             System.out.println("<-- Regresando...");
                             traslados_bodega();
-                        }else if(bodega_5[producto_entrada][espacio_entrada]!="-" && estado_traslado==true){
+                        }
+                if(bodega_salida==5 && bodega_5[producto_salida][espacio_salida]!="-" || (bodega_salida==5 && estado_traslado==true)){
                             bodega_5[producto_salida][espacio_salida]="-";
                             
                             System.out.println("Salida B5: Traslado correcto...");
-                            espacios_b5--;
+                            espacios_b5++;
                             estado_traslado = true;
      
                     }
-                
-
+            
             if (bodega_entrada==5 && bodega_5[producto_entrada][espacio_entrada]=="-"){
                         //verifica si el espacio esta vacio
                             System.out.println("Espacio disponible..."+espacios_b5);
                             estado_traslado=true;
                             bodega_5[producto_entrada][espacio_entrada]="B5P"+producto_entrada+","+espacio_entrada;
-                            System.out.println("•Producto #"+producto_entrada+" ingresado" );
-                            espacios_b5++;
+                            System.out.println("•Producto #"+producto_entrada+" en el Espacio#"+espacio_entrada+" de la Bodega #"+bodega_entrada+" ingresado" );
+                            espacios_b5--;
             }
-                        else if(bodega_5[producto_entrada][espacio_entrada]!="-"){
+            else if(bodega_entrada==5 && bodega_5[producto_entrada][espacio_entrada]!="-" && estado_traslado==false ){
                             System.out.println("Entrada B5: Traslado incorrecto...");
                             System.out.println("Espacio Ocupado");
                             
                             estado_traslado = false;
                         }
-            //----------------------------------------------------------
             
+            //----------------------------------------------------------
                 if(bodega_salida==6 && bodega_6[producto_salida][espacio_salida]=="-" && estado_traslado==false){
                             estado_traslado=false;
-                            System.out.println("•Producto #"+producto_salida+" en Bodega #"+bodega_salida+" no existe" );
+                            System.out.println("•Producto #"+producto_salida+" en el Espacio#"+espacio_salida+" de la Bodega #"+bodega_salida+" no existe" );
                             System.out.println("<-- Regresando...");
                             traslados_bodega();
-                        }else if(bodega_6[producto_entrada][espacio_entrada]!="-" && estado_traslado==true){
+                        }
+                if(bodega_salida==6 && bodega_6[producto_salida][espacio_salida]!="-" || (bodega_salida==6 && estado_traslado==true)){
                             bodega_6[producto_salida][espacio_salida]="-";
                             
                             System.out.println("Salida B6: Traslado correcto...");
-                            espacios_b6--;
+                            espacios_b6++;
                             estado_traslado = true;
      
                     }
@@ -1119,20 +1130,24 @@ System.out.println("Se trasladara de Bodega #"+bodega_salida+" a Bodega #"+bodeg
                         //verifica si el espacio esta vacio
                             System.out.println("Espacio disponible..."+espacios_b6);
                             estado_traslado=true;
-                            bodega_1[producto_entrada][espacio_entrada]="B6P"+producto_entrada+","+espacio_entrada;
-                            System.out.println("•Producto #"+producto_entrada+" ingresado" );
-                            espacios_b6++;
+                            bodega_6[producto_entrada][espacio_entrada]="B6P"+producto_entrada+","+espacio_entrada;
+                            System.out.println("•Producto #"+producto_entrada+" en el Espacio#"+espacio_entrada+" de la Bodega #"+bodega_entrada+" ingresado");
+                            espacios_b6--;
             }
-                        else if(bodega_6[producto_entrada][espacio_entrada]!="-"){
+            else if(bodega_entrada==6 && bodega_6[producto_entrada][espacio_entrada]!="-" && estado_traslado==false){
                             System.out.println("Entrada B6: Traslado incorrecto...");
                             System.out.println("Espacio Ocupado");
                             
                             estado_traslado = false;
                         }
                     
-                    
+                    if(estado_traslado==true){
+                        System.out.println("---->Solicitud Completa!!");
+                    }else if(estado_traslado==false){
+                        System.out.println("<----Solicitud Incompleta... Verifique datos.");
+                    }
                         
-                menu_principal();
+               traslados_bodega();
             
             
             
