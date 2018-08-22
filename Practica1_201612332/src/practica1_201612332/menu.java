@@ -15,52 +15,54 @@ import java.util.Random;
 public class menu {
 
     //Variables publicas y estaticas para navegacion...
-    public static String opcion;//
-    public static int opcion_num;
-    public static int num_bodega;
-    public static int num_productos;
+    static String opcion;//
+    static int opcion_num;
+    static int num_bodega;
+    static int num_productos;
+    static int num_ingreso;
     
-    public static int fila_random;
-    public static int columna_random;
+    static int fila_random;
+    static int columna_random;
     
     
-    public static Scanner leer = new Scanner(System.in);
-    public static Scanner leer_num = new Scanner(System.in);
+    static Scanner leer = new Scanner(System.in);
+    static Scanner leer_num = new Scanner(System.in);
     
     //variables publicas para arreglos y matrices
-    public static String[][] bodega_1=new String[6][21];
-    public static String[][] bodega_2=new String[6][21];
-    public static String[][] bodega_3=new String[6][21];
-    public static String[][] bodega_4=new String[6][21];
-    public static String[][] bodega_5=new String[6][21];
-    public static String[][] bodega_6=new String[6][21];
+    static String[][] bodega_1=new String[6][21];
+    static String[][] bodega_2=new String[6][21];
+    static String[][] bodega_3=new String[6][21];
+    static String[][] bodega_4=new String[6][21];
+    static String[][] bodega_5=new String[6][21];
+    static String[][] bodega_6=new String[6][21];
     
-    public static int fila_nueva=1;
-    public static String estado_nuevo;//este sera el nombre a colocar en la nueva fila ↑ #correlativo /compra o venta
-    public static String[][] kardex = new String[100][7];
+    static int fila_nueva=1;
+    static String estado_nuevo;//este sera el nombre a colocar en la nueva fila ↑ #correlativo /compra o venta
+    static String[][] kardex = new String[100][7];
     
-    public static int num_existencias=0, tot_existencias=0, tot_existencias_anterior=0; //existencias
+    static int num_existencias=0, tot_existencias=0, tot_existencias_anterior=0; //existencias
     
-    public static int num_entradas=0, tot_entradas=0; //reabastecimiento manual
-    public static int num_salidas=0, tot_salidas=0; //realiar pedido
+    static int num_entradas=0, tot_entradas=0; //reabastecimiento manual
+    static int num_salidas=0, tot_salidas=0; //realiar pedido
     
-    public static int espacios_b1=100,espacios_b2=100,espacios_b3=100, espacios_b4=100,espacios_b5=100,espacios_b6=100;
+    static int espacios_b1=100,espacios_b2=100,espacios_b3=100, espacios_b4=100,espacios_b5=100,espacios_b6=100;
     
-    public static int bodega_salida ,producto_salida, espacio_salida,  bodega_entrada,  producto_entrada, espacio_entrada;
+    static int bodega_salida ,producto_salida, espacio_salida,  bodega_entrada,  producto_entrada, espacio_entrada;
     
-    public static boolean bodega1_llena=false;
-    public static boolean bodega2_llena=false;
-    public static boolean bodega3_llena=false;
-    public static boolean bodega4_llena=false;
-    public static boolean bodega5_llena=false;
-    public static boolean bodega6_llena=false;
+    static boolean bodega1_llena=false;
+    static boolean bodega2_llena=false;
+    static boolean bodega3_llena=false;
+    static boolean bodega4_llena=false;
+    static boolean bodega5_llena=false;
+    static boolean bodega6_llena=false;
     
-    public static boolean estado_traslado=false;
-    public static boolean estado_autoR=false;
+    static boolean estado_traslado=false;
+    static boolean estado_autoR=false;
+    static boolean estado_mR=false;
     
-    public static int contador_productos;
-    public static int contador_espacioP;
-    public static int seleccion_producto;
+    static int contador_productos;
+    static int contador_espacioP;
+    static int seleccion_producto;
     
     public static void main(String[] args) {
         plantilla_tablas();
@@ -69,7 +71,7 @@ public class menu {
         
     }
     
-    public static void menu_principal() {
+    static void menu_principal() {
         System.out.println("------------------------");
         System.out.println("║-----Menu-----║");
         System.out.println("║1|Datos de prueba");
@@ -117,7 +119,7 @@ public class menu {
     }
     
         
-    public static void datos_prueba(){
+    static void datos_prueba(){
                         System.out.println("------------------------");
                         System.out.println("║-----Datos de Prueba-----║");
                         System.out.println("║1|Ingresar Parametros");
@@ -174,7 +176,7 @@ public class menu {
                                 
                                 
                             }else{
-                                System.out.println("Error: el ingreso de productos supera el limite, puede ingresar "+espacios_b2+" unidades");
+                                System.out.println("Error: el ingreso de productos supera el limite, puede ingresar "+espacios_b1+" unidades");
                                 System.out.println("Regresando...");
                                 datos_prueba();
                             }
@@ -283,92 +285,9 @@ public class menu {
                             System.out.println("2. No");
                             opcion = leer.next();
                             switch(opcion){
-                                case "1":  
-            //metodo kardex para el ingreso por datos de prueba ->reiniciando valores de kardex
-            tot_existencias_anterior=0;
-            num_existencias=0;
-            tot_existencias=0;// guardara un nuevo valor de las existencias
-            kardex[fila_nueva][0]="Limpieza...";
-            kardex[fila_nueva][5]=""+num_existencias+"         ";
-            
-            kardex[fila_nueva][6]=""+tot_existencias+"        ";//total
-            fila_nueva++; //contador de filas
-            //contador de existencia anterior
-            //fin kardex
-                                    if(num_bodega==1){ System.out.println("•••Vaciando");
-                                            System.out.println("->Bodega #"+num_bodega+" vacia ");
-                                            
-                                            //modificacion de revision de nulos convirtiendolos a nulos totales
-                                            for(int x=1;x<6;x++){
-                                            for(int y=1;y<21;y++){
-                                            bodega_1[x][y]="-";
-                                                                }
-                                                                }
-                                            espacios_b1=100;
-                                        datos_prueba();
-                                }
-                                    if(num_bodega==2){ System.out.println("•••Vaciando");
-                                            System.out.println("->Bodega #"+num_bodega+" vacia ");
-                                            
-                                            //modificacion de revision de nulos convirtiendolos a nulos totales
-                                            for(int x=1;x<6;x++){
-                                            for(int y=1;y<21;y++){
-                                            bodega_2[x][y]="-";
-                                                                }
-                                                                }
-                                            espacios_b2=100;
-                                        datos_prueba();
-                                }
-                                    if(num_bodega==3){ System.out.println("•••Vaciando");
-                                            System.out.println("->Bodega #"+num_bodega+" vacia ");
-                                            
-                                            //modificacion de revision de nulos convirtiendolos a nulos totales
-                                            for(int x=1;x<6;x++){
-                                            for(int y=1;y<21;y++){
-                                            bodega_3[x][y]="-";
-                                                                }
-                                                                }
-                                            espacios_b3=100;
-                                        datos_prueba();
-                                }
-                                    if(num_bodega==4){ System.out.println("•••Vaciando");
-                                            System.out.println("->Bodega #"+num_bodega+" vacia ");
-                                            
-                                            //modificacion de revision de nulos convirtiendolos a nulos totales
-                                            for(int x=1;x<6;x++){
-                                            for(int y=1;y<21;y++){
-                                            bodega_4[x][y]="-";
-                                                                }
-                                                                }
-                                            espacios_b4=100;
-                                        datos_prueba();
-                                }
-                                    if(num_bodega==5){ System.out.println("•••Vaciando");
-                                            System.out.println("->Bodega #"+num_bodega+" vacia ");
-                                            
-                                            //modificacion de revision de nulos convirtiendolos a nulos totales
-                                            for(int x=1;x<6;x++){
-                                            for(int y=1;y<21;y++){
-                                            bodega_5[x][y]="-";
-                                                                }
-                                                                }
-                                            espacios_b5=100;
-                                        datos_prueba();
-                                }
-                                    if(num_bodega==6){ System.out.println("•••Vaciando");
-                                            System.out.println("->Bodega #"+num_bodega+" vacia ");
-                                            
-                                            //modificacion de revision de nulos convirtiendolos a nulos totales
-                                            for(int x=1;x<6;x++){
-                                            for(int y=1;y<21;y++){
-                                            bodega_6[x][y]="-";
-                                                                }
-                                                                }
-                                            espacios_b6=100;
-                                        datos_prueba();
-                                }
-                                    
-                                
+                                case "1":                                
+                                    papelero();
+
                                     break;
                                     
                                 case "2":
@@ -398,7 +317,7 @@ public class menu {
 
             }
             
-        public static void traslados_bodega(){
+        static void traslados_bodega(){
                         System.out.println("---------------------------");
                         System.out.println("║-----Datos de Prueba-----║");
                         System.out.println("║1|Verificar posibles traslados");
@@ -517,7 +436,7 @@ System.out.println("Se trasladara de Bodega #"+bodega_salida+" a Bodega #"+bodeg
             }
         }
         
-        public static void reabastecimiento(){
+        static void reabastecimiento(){
         System.out.println("------------------------");
         System.out.println("║----- Reabastecimiento -----║");
         System.out.println("║1|Reabastecer automatizado");
@@ -528,26 +447,35 @@ System.out.println("Se trasladara de Bodega #"+bodega_salida+" a Bodega #"+bodeg
         opcion = leer.next();
             switch(opcion){
                 case "1": System.out.println("----- Reabastecer Automatizado -----");
+                
+                try{
                     System.out.println("-> Ingrese el numero de Bodega a Reabastecer:");
                     
                     num_bodega = leer_num.nextInt();
-                    
+                    }catch(Exception e){
+                    System.err.println("Error: "+e);
+                    System.out.println("Ingrese valor numerico valido");
+                    System.out.println("◄ Regresando");
+                    reabastecimiento();
+                }
                     while(num_bodega<=0 || num_bodega>=7){
                                 System.out.println("Solamente existen bodegas de 1-6...");
                                     num_bodega=leer_num.nextInt();     
                             }
+                
                     System.out.println("Bodega seleccionada: #"+num_bodega);
                     System.out.println("Verificando solicitud");
                     verificador_autoReabastecimiento();
                     
                     if(estado_autoR==true){
-                        System.out.println("Se han reabastecido productos en Bodega #"+num_bodega);
+                        System.out.println("Se han reabastecido productos en Bodega #"+num_bodega+" satisfactoriamente");
                     }else if(estado_autoR==false){
-                        System.out.println("No hay Producto a reabastecer en Bodega #"+num_bodega);
+                        System.out.println("No hay mas productos a reabastecer en Bodega #"+num_bodega);
                     }
+                
                     
                     System.out.println("-----------------------------");
-            System.out.println("☺ Regresando a menu pricipal");
+            System.out.println("◄ Regresando");
             System.out.println("→INGRESE CUALQUIER CARACTER PARA CONTINUAR...");
                                     opcion=leer.next();
                                     switch(opcion){
@@ -558,6 +486,52 @@ System.out.println("Se trasladara de Bodega #"+bodega_salida+" a Bodega #"+bodeg
                     break;
                     
                 case "2": System.out.println("----- Reabastecer Manual -----");
+                    try{
+                    System.out.println("Ingrese n. de Bodega");
+                    num_bodega=leer.nextInt();
+                    while(num_bodega<=0 || num_bodega>=7){
+                                System.out.println("Solamente existen bodegas de 1-6...");
+                                    num_bodega=leer_num.nextInt();     
+                            }
+                    System.out.println("Ingrese n. de Producto");
+                    num_productos=leer.nextInt();
+                    while(num_productos<=0 || num_productos>=6){
+                                System.out.println("Solamente existen productos de 1-5...");
+                                    num_productos=leer_num.nextInt();     
+                            }
+                    System.out.println("Ingrese n. de Existencias");
+                    num_ingreso=leer.nextInt();
+                    while(num_ingreso>=20){
+                                System.out.println("Solamente puede ingresar 1-20 unidades...");
+                                    num_ingreso=leer_num.nextInt();     
+                            }
+                    }catch(Exception e){
+                        System.out.println("Por favor ingrese valores numericos validos...");
+                        System.out.println("Reiniciando...");
+                        reabastecimiento();
+                    }
+                    verificador_mReabastecimiento();
+                    
+                    if(estado_mR=true){
+                        System.out.println("Completado: Se han ingresado "+num_ingreso+" unidades de Producto #"+num_productos);
+                    }
+                    if(estado_mR=false){
+                        System.out.println("Error: el ingreso de productos supera el limite, puede ingresar "+espacios_b1+" unidades");
+                        System.out.println("Regresando...");
+                        reabastecimiento();
+                    }
+                    
+                    System.out.println("-----------------------------");
+                    System.out.println("◄ Regresando");
+                    System.out.println("→INGRESE CUALQUIER CARACTER PARA CONTINUAR...");
+                                    opcion=leer.next();
+                                    switch(opcion){
+                                        default: 
+                                            reabastecimiento();
+                                            break;
+                                    }
+                    
+                    
                         break;
                     
                 case "3":System.out.println("<--Regresando...");
@@ -572,11 +546,11 @@ System.out.println("Se trasladara de Bodega #"+bodega_salida+" a Bodega #"+bodeg
         }
         }
         
-        public static void salida_productos(){
+        static void salida_productos(){
             
         }
         
-        public static void kardex(){
+        static void kardex(){
             
             System.out.println("♦|░MOSTRANDO KARDEX░");
             
@@ -603,12 +577,27 @@ System.out.println("Se trasladara de Bodega #"+bodega_salida+" a Bodega #"+bodeg
                                             break;
                                     }
         }
+        static void kardex_pruebas(){
+            //metodo kardex para el ingreso por datos de prueba              
+            num_existencias=num_existencias+num_productos; //dato para kardex
+                            
+            tot_existencias=num_existencias*5;
+            
+            
+            kardex[fila_nueva][0]="Saldo Ante.";
+            kardex[fila_nueva][5]=""+num_existencias+"        ";
+            
+            kardex[fila_nueva][6]=""+tot_existencias+"        ";
+            fila_nueva++; //contador de filas
+            //contador de existencia anterior
+            //fin kardex
+        }
         
-        public static void reportes(){
+        static void reportes(){
             
         }
         
-        public static void mostrar_bodegas(){
+        static void mostrar_bodegas(){
             System.out.println("|♣|MOSTRANDO BODEGA #1");
             
             for (int x=0; x < bodega_1.length; x++) {
@@ -699,7 +688,7 @@ System.out.println("Se trasladara de Bodega #"+bodega_salida+" a Bodega #"+bodeg
                                     
         }
 
-        public static void plantilla_tablas() { //este metodo tipo plantilla solamente cargará la primera fila y primera columna...
+        static void plantilla_tablas() { //este metodo tipo plantilla solamente cargará la primera fila y primera columna...
                         
                                         bodega_1[0][0]="|B1|";
                                         bodega_2[0][0]="|B2|";
@@ -821,7 +810,7 @@ System.out.println("Se trasladara de Bodega #"+bodega_salida+" a Bodega #"+bodeg
         
     }
         
-        public static void llenado_bodegas(){
+        static void llenado_bodegas(){
             if (num_bodega ==1){
                 int contador_prod;
                 contador_prod=num_productos;
@@ -915,17 +904,17 @@ System.out.println("Se trasladara de Bodega #"+bodega_salida+" a Bodega #"+bodeg
             
         }
         
-        public static void num_randoms(){
+        static void num_randoms(){
             fila_random=(int)(Math.random() * 5 + 1); //este solo podra estar comprendido entre la fila 2→6 en el arreglo de 1→5
             columna_random = (int)(Math.random() * 20 + 1); //este solo podra estar comprendido entre columna 2→20 en el arreglo de 1→19
             
-        }
+        }//para el ingreso aleatorio de productos
  
-        public static void imprime_Ebodega(){
+        static void imprime_Ebodega(){
             
             System.out.println("Espacios en bodegas: |"+espacios_b1+"|"+espacios_b2+"|"+espacios_b3+"|"+espacios_b4+"|"+espacios_b5+"|"+espacios_b6+"|");
         }
-        public static void carga_bodega1(){
+        static void carga_bodega1(){
          System.out.println("Bodega seleccionada: "+num_bodega);
                                 llenado_bodegas();//metodo para llenar bodega
                              
@@ -951,7 +940,7 @@ System.out.println("Se trasladara de Bodega #"+bodega_salida+" a Bodega #"+bodeg
                                             break;
                                     }
     }
-        public static void carga_bodega2(){
+        static void carga_bodega2(){
          System.out.println("Bodega seleccionada: "+num_bodega);
                                 llenado_bodegas();//metodo para llenar bodega
                              
@@ -977,7 +966,7 @@ System.out.println("Se trasladara de Bodega #"+bodega_salida+" a Bodega #"+bodeg
                                             break;
                                     }
     }    
-        public static void carga_bodega3(){
+        static void carga_bodega3(){
          System.out.println("Bodega seleccionada: "+num_bodega);
                                 llenado_bodegas();//metodo para llenar bodega
                              
@@ -1003,7 +992,7 @@ System.out.println("Se trasladara de Bodega #"+bodega_salida+" a Bodega #"+bodeg
                                             break;
                                     }
     }
-        public static void carga_bodega4(){
+        static void carga_bodega4(){
          System.out.println("Bodega seleccionada: "+num_bodega);
                                 llenado_bodegas();//metodo para llenar bodega
                              
@@ -1029,7 +1018,7 @@ System.out.println("Se trasladara de Bodega #"+bodega_salida+" a Bodega #"+bodeg
                                             break;
                                     }
     }    
-        public static void carga_bodega5(){
+        static void carga_bodega5(){
          System.out.println("Bodega seleccionada: "+num_bodega);
                                 llenado_bodegas();//metodo para llenar bodega
                              
@@ -1055,7 +1044,7 @@ System.out.println("Se trasladara de Bodega #"+bodega_salida+" a Bodega #"+bodeg
                                             break;
                                     }
     }
-        public static void carga_bodega6() {
+        static void carga_bodega6() {
        System.out.println("Bodega seleccionada: "+num_bodega);
                                 llenado_bodegas();//metodo para llenar bodega
                              
@@ -1082,7 +1071,7 @@ System.out.println("Se trasladara de Bodega #"+bodega_salida+" a Bodega #"+bodeg
                                     }
     }
     
-        public static void verificador_bodegas(){
+        static void verificador_bodegas(){
             //----------------------------------------------------------
             
                 //verificara cuando la bodega de salida no sea un espacio vacio, si el estado de traslado en algun momento cambia a falso
@@ -1295,83 +1284,259 @@ System.out.println("Se trasladara de Bodega #"+bodega_salida+" a Bodega #"+bodeg
             
         }
     
-        public static void verificador_autoReabastecimiento(){
-            
-            
-            if(num_bodega==1 ){
-                contador_productos=0;
-                seleccion_producto=0;
+        static void verificador_autoReabastecimiento(){
+
+                verificador_auto(1);
+                verificador_auto(2);
+                verificador_auto(3);
+                verificador_auto(4);
+                verificador_auto(5);
+
+        }
+        
+        static void verificador_mReabastecimiento(){
+                verificador_manual(num_productos);
                 
-                for (int i=1;i<bodega_1.length;i++){
-                    seleccion_producto++;
-                    for (int j=1;j<21;j++){
-                        if(bodega_1[1][j]=="-"){//contara cuantas existencias de cada producto hay
-                        contador_productos++;  
-                        }
-                        if(seleccion_producto==1 && (contador_productos<20 && contador_productos>15)){//0-20
-                            for(int k=1;k<21;k++){
-                            bodega_1[1][k]="B"+num_bodega+"P"+seleccion_producto+","+k;
-                            
-                            espacios_b1--;
-                            }
-                            estado_autoR=true;
-                        }else if(seleccion_producto==1 && (contador_productos<20 && contador_productos<15)){
-                            estado_autoR=false;
-                        }
-                    }
-                    System.out.println("El producto P#"+seleccion_producto+" tiene "+contador_productos+" espacios...");
-     
-                }
-                
-                /*
-                        if(seleccion_producto==2 && (contador_productos<40 && contador_productos>35)){//20-40
-                            for(int k=1;k<21;k++){
-                        bodega_1[2][k]="B"+num_bodega+"P"+seleccion_producto+","+j;
-                            }   
-                        }
-                        if(seleccion_producto==3 && (contador_productos<60 && contador_productos>55)){//40-60
-                            for(int k=1;k<21;k++){
-                        bodega_1[3][k]="B"+num_bodega+"P"+seleccion_producto+","+j;
-                            }   
-                        }
-                        if(seleccion_producto==4 && (contador_productos<80 && contador_productos>75)){//60-80
-                            for(int k=1;k<21;k++){
-                        bodega_1[4][k]="B"+num_bodega+"P"+seleccion_producto+","+j;
-                            }   
-                        }
-                        if(seleccion_producto==5 && (contador_productos<100 && contador_productos>95)){//80-100
-                            for(int k=1;k<21;k++){
-                        bodega_1[5][k]="B"+num_bodega+"P"+seleccion_producto+","+j;
-                            }
-                        }
-*/
-                
-                
-            }
-            
-            
         }
         
         
-        public static void kardex_pruebas(){
-            //metodo kardex para el ingreso por datos de prueba              
-            num_existencias=num_existencias+num_productos; //dato para kardex
-                            
-            tot_existencias=num_existencias*5;
+        
+        
+        static void verificador_auto(int producto){
+                
+            if(num_bodega==1){
             
+                int contador_unidades=0;
+
+                    for(int E=1;E<21;E++){
+                        if (bodega_1[producto][E]!="-"){
+                            contador_unidades++;
+                        }
+                        
+                    }if(contador_unidades<3){
+                        System.out.println("El Producto#"+producto+"tiene "+contador_unidades+" unidades... Se llenara");
+                        for(int E=1;E<21;E++){
+                            bodega_1[producto][E]="B1P"+producto+","+E;
+                        }
+                        espacios_b1=espacios_b1-(20-contador_unidades);
+                        estado_autoR=true;
+                    }else{
+                        estado_autoR=false;
+                    }
+            }
+            if(num_bodega==2){
             
-            kardex[fila_nueva][0]="Saldo Ante.";
-            kardex[fila_nueva][5]=""+num_existencias+"         ";
+                int contador_unidades=0;
+
+                    for(int E=1;E<21;E++){
+                        if (bodega_2[producto][E]!="-"){
+                            contador_unidades++;
+                        }
+                        
+                    }if(contador_unidades<3){
+                        System.out.println("El Producto#"+producto+"tiene "+contador_unidades+" unidades... Se llenara");
+                        for(int E=1;E<21;E++){
+                            bodega_2[producto][E]="B2P"+producto+","+E;
+                        }
+                        espacios_b2=espacios_b2-(20-contador_unidades);
+                        estado_autoR=true;
+                    }else{
+                        estado_autoR=false;
+                    }
+            }
+            if(num_bodega==3){
             
-            kardex[fila_nueva][6]=""+tot_existencias+"         ";
-            fila_nueva++; //contador de filas
-            //contador de existencia anterior
-            //fin kardex
+                int contador_unidades=0;
+
+                    for(int E=1;E<21;E++){
+                        if (bodega_3[producto][E]!="-"){
+                            contador_unidades++;
+                        }
+                        
+                    }if(contador_unidades<3){
+                        System.out.println("El Producto#"+producto+"tiene "+contador_unidades+" unidades... Se llenara");
+                        for(int E=1;E<21;E++){
+                            bodega_3[producto][E]="B3P"+producto+","+E;
+                        }
+                        espacios_b3=espacios_b3-(20-contador_unidades);
+                        estado_autoR=true;
+                    }else{
+                        estado_autoR=false;
+                    }
+            }
+            if(num_bodega==4){
+            
+                int contador_unidades=0;
+
+                    for(int E=1;E<21;E++){
+                        if (bodega_4[producto][E]!="-"){
+                            contador_unidades++;
+                        }
+                        
+                    }if(contador_unidades<3){
+                        System.out.println("El Producto#"+producto+"tiene "+contador_unidades+" unidades... Se llenara");
+                        for(int E=1;E<21;E++){
+                            bodega_4[producto][E]="B4P"+producto+","+E;
+                        }
+                        espacios_b4=espacios_b4-(20-contador_unidades);
+                        estado_autoR=true;
+                    }else{
+                        estado_autoR=false;
+                    }
+            }
+            if(num_bodega==5){
+            
+                int contador_unidades=0;
+
+                    for(int E=1;E<21;E++){
+                        if (bodega_5[producto][E]!="-"){
+                            contador_unidades++;
+                        }
+                        
+                    }if(contador_unidades<3){
+                        System.out.println("El Producto#"+producto+"tiene "+contador_unidades+" unidades... Se llenara");
+                        for(int E=1;E<21;E++){
+                            bodega_5[producto][E]="B5P"+producto+","+E;
+                        }
+                        espacios_b5=espacios_b5-(20-contador_unidades);
+                        estado_autoR=true;
+                    }else{
+                        estado_autoR=false;
+                    }
+            }
+            if(num_bodega==6){
+            
+                int contador_unidades=0;
+
+                    for(int E=1;E<21;E++){
+                        if (bodega_6[producto][E]!="-"){
+                            contador_unidades++;
+                        }
+                        
+                    }if(contador_unidades<3){
+                        System.out.println("El Producto#"+producto+"tiene "+contador_unidades+" unidades... Se llenara");
+                        for(int E=1;E<21;E++){
+                            bodega_6[producto][E]="B6P"+producto+","+E;
+                        }
+                        espacios_b6=espacios_b6-(20-contador_unidades);
+                        estado_autoR=true;
+                    }else{
+                        estado_autoR=false;
+                    }
+            }
         }
        
-    
-}
-    
-    
-    
+        static void verificador_manual(int producto){
+            if(num_bodega==1){
+            
+                int contador_unidades=0;
 
+                    
+                        if (bodega_1[num_productos][producto]!="-"){
+                            contador_unidades++;
+                        
+                        
+                    }if(contador_unidades<20){
+                        System.out.println("El Producto#"+producto+"tiene "+contador_unidades+" unidades... Se llenara");
+                        for(int E=1;E<num_ingreso;E++){
+                            bodega_1[producto][E]="B1P"+producto+","+E;
+                        }
+                        espacios_b1=espacios_b1-(20-contador_unidades);
+                        estado_mR=true;
+                        
+                    }else{
+                        estado_mR=false;
+                    }
+            }
+            
+        }
+        static void papelero(){
+            System.out.println("Reiniciando Kardex...");
+            //metodo kardex para el reinicio ->reiniciando valores de kardex
+            tot_existencias_anterior=0;
+            num_existencias=0;
+            tot_existencias=0;// guardara un nuevo valor de las existencias
+            while(fila_nueva>1){//buscara el valor de la fila en el kardex hasta que deje de ser mayor a 1 este borrara las filas...
+                kardex[fila_nueva][0]=null;
+                kardex[fila_nueva][5]=null;
+            
+                kardex[fila_nueva][6]=null;//total
+                fila_nueva--; //contador de filas
+                //contador de existencia anterior
+            }
+            //fin kardex
+                                    
+                                    if(num_bodega==1){ System.out.println("•••Vaciando Bodega #"+num_bodega);
+                                        System.out.println("→| Bodega #"+num_bodega+" vacia ");
+                                            
+                                            //modificacion de revision de nulos convirtiendolos a nulos totales
+                                            for(int x=1;x<6;x++){
+                                            for(int y=1;y<21;y++){
+                                            bodega_1[x][y]="-";
+                                                                }
+                                                                }
+                                            espacios_b1=100;
+                                        datos_prueba();
+                                }
+                                    if(num_bodega==2){ System.out.println("•••Vaciando Bodega #"+num_bodega);
+                                            System.out.println("→| Bodega #"+num_bodega+" vacia ");
+                                            
+                                            //modificacion de revision de nulos convirtiendolos a nulos totales
+                                            for(int x=1;x<6;x++){
+                                            for(int y=1;y<21;y++){
+                                            bodega_2[x][y]="-";
+                                                                }
+                                                                }
+                                            espacios_b2=100;
+                                        datos_prueba();
+                                }
+                                    if(num_bodega==3){ System.out.println("•••Vaciando Bodega #"+num_bodega);
+                                            System.out.println("→| Bodega #"+num_bodega+" vacia ");
+                                            
+                                            //modificacion de revision de nulos convirtiendolos a nulos totales
+                                            for(int x=1;x<6;x++){
+                                            for(int y=1;y<21;y++){
+                                            bodega_3[x][y]="-";
+                                                                }
+                                                                }
+                                            espacios_b3=100;
+                                        datos_prueba();
+                                }
+                                    if(num_bodega==4){ System.out.println("•••Vaciando Bodega #"+num_bodega);
+                                            System.out.println("→| Bodega #"+num_bodega+" vacia ");
+                                            
+                                            //modificacion de revision de nulos convirtiendolos a nulos totales
+                                            for(int x=1;x<6;x++){
+                                            for(int y=1;y<21;y++){
+                                            bodega_4[x][y]="-";
+                                                                }
+                                                                }
+                                            espacios_b4=100;
+                                        datos_prueba();
+                                }
+                                    if(num_bodega==5){ System.out.println("•••Vaciando Bodega #"+num_bodega);
+                                            System.out.println("→| Bodega #"+num_bodega+" vacia ");
+                                            
+                                            //modificacion de revision de nulos convirtiendolos a nulos totales
+                                            for(int x=1;x<6;x++){
+                                            for(int y=1;y<21;y++){
+                                            bodega_5[x][y]="-";
+                                                                }
+                                                                }
+                                            espacios_b5=100;
+                                        datos_prueba();
+                                }
+                                    if(num_bodega==6){ System.out.println("•••Vaciando Bodega #"+num_bodega);
+                                            System.out.println("→| Bodega #"+num_bodega+" vacia ");
+                                            
+                                            //modificacion de revision de nulos convirtiendolos a nulos totales
+                                            for(int x=1;x<6;x++){
+                                            for(int y=1;y<21;y++){
+                                            bodega_6[x][y]="-";
+                                                                }
+                                                                }
+                                            espacios_b6=100;
+                                        datos_prueba();
+                                }
+        }
+}    
